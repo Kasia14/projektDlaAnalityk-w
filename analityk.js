@@ -1,8 +1,11 @@
 const btnTransform = document.querySelector('.transponse');
 class Matrix {
     macierz = [];
+    x = 0;
+    y= 0;
     constructor(x, y) {
-       
+        this.x = x;
+        this.y = y;
         for (let i = 0; i < x; i++) {
             let wiersz = [];
             for (let j = 0; j < y; j++) {
@@ -24,79 +27,84 @@ class Matrix {
     }
 
     setValue(x, y, value) {
-       this.macierz[x][y] = value;
+        this.macierz[x][y] = value;
     }
 
     getValue(x, y) {
         return this.macierz[x][y];
     }
 
-    transponse(){
+    transponse() {
         let newMatrix = [];
-        for(let x = 0; x < this.macierz[0].length; x++)
-        {
+        for (let x = 0; x < this.macierz[0].length; x++) {
             let row = [];
-            for(let y = 0; y < this.macierz.length; y++)
-            {
+            for (let y = 0; y < this.macierz.length; y++) {
                 row.push(this.macierz[y][x]);
             }
             newMatrix.push(row);
         }
         this.macierz = newMatrix;
+        this.x = this.macierz.length;
+        this.y = this.macierz[0].length;
     }
 
+    createMatrix() {
+        const createMatrixInput = document.querySelector('.createMatrixInput');
+        createMatrixInput.innerHTML = '';
+        if (this.x !== 0 && this.y !== 0) {
+            for(let i = 0; i < this.x; i++){
+                const row = document.createElement('div');
+                row.className = 'row';
+                for(let j = 0; j < this.y; j++){
+                    const input = document.createElement('input');
+                    input.className = 'cell';
+                    input.value = this.macierz[i][j];
+                    row.appendChild(input);
+                }
+                createMatrixInput.appendChild(row);
+            }        
+        } 
+        else {
+            alert('Liczba musi być większa od 0')
+        }
+       
 
-    
+    }
 }
 
 
 
-function hideOrShow () {
+
+
+function hideOrShow() {
     const BtnCreate = document.querySelector('.createMatrix');
-    BtnCreate.addEventListener('click', () =>{
+    const BtnTrans= document.querySelector('.transponse');
+    BtnCreate.addEventListener('click', () => {
+        const row = document.querySelector('.numberRow');
+        const column = document.querySelector('.numberColumn')
+        const matrix = new Matrix(row.value, column.value);
+        matrix.createMatrix();
+        BtnTrans.addEventListener('click', function() { 
+            matrix.transponse();
+            matrix.createMatrix();
+         })
+        //zmienna globalna
+        window.matrix = matrix;
+
         const rowColumn = document.querySelectorAll('.rowColumn');
-        rowColumn.forEach(function(x) {
-            if(x.style.display !='none'){
+        rowColumn.forEach(function (x) {
+            if (x.style.display != 'none') {
                 x.style.display = 'none';
-            } else{
+            } else {
                 x.style.display = 'block';
             }
         })
     })
-  
+
 }
 
 
-function createMatrix(){
-    const createMatrixInput = document.querySelector('.createMatrixInput');
-    const row = document.querySelector('.numberRow');
-    const column = document.querySelector('.numberColumn')
-   
-    if(row !== 0 && column !== 0){
-        for(let i = 1; i <=column.value; i++){
-            const input = document.createElement("input");
-            input.type = "number";
-            input.innerHTML =`<input type="number">${i}</input>`;
-            for(let j = 1; j <=row.value; j++){
-                const input = document.createElement("div");
-                input.innerHTML =`<div>${j}</div>`
-            } 
-        }
-       
 
-        
-    }else {
-        alert ('Liczba musi być większa od 0')
-    }
-    createMatrixInput.appendChild(input);
-}
 
 
 hideOrShow();
-
-
-
-const matrix = new Matrix();
-matrix.transponse();
-
-btnTransform.addEventListener('click', matrix.transponse)

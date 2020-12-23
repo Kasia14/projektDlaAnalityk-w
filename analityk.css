@@ -52,11 +52,6 @@ label{
     background-color: white;
 }
 
-.createMatrixInput{
-    display: flex;
-    justify-content: center;
-    flex-direction: row;
-}
 .transponse{
     width: 50%;
     display: flex;
@@ -91,11 +86,9 @@ label{
 .createMatrixInput{
     background-color:rgb(191, 213, 216);
     width: fit-content;
-    display: flex;
     justify-content: center;
     align-self: center;
     border: 1px solid black;
-
 }
 
 .img{
@@ -105,4 +98,9 @@ label{
     justify-content: center;
     align-self: center;
     margin-top: 5%;
+}
+
+.row {
+    display: flex;
+
 }
