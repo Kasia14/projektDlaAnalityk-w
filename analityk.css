@@ -1,0 +1,108 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC&display=swap');
+
+body{
+    background-color: darkseagreen;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-family: 'Noto Sans SC', sans-serif
+}
+ 
+
+
+.create{
+    display: flex;
+    justify-content: center; 
+    flex-direction: column;
+    justify-content: center;
+}
+.numberColumn{
+  
+    width: 5%;
+    border: 2px solid black;
+    border-radius: 10%;
+}
+.numberRow{
+    width: 5%;
+    border: 2px solid black;
+    border-radius: 10%;
+}
+label{
+    display: flex;
+    flex-direction: column;
+}
+
+.createMatrix{
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-self: center;
+    border: 2px solid ridge;
+    background-color: transparent;
+    cursor: pointer;
+    text-transform: uppercase;
+    color: black;
+    font-family: 'Noto Sans SC', sans-serif
+    
+
+}
+.createMatrix:hover{
+    background-color: white;
+}
+
+.createMatrixInput{
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+}
+.transponse{
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-self: center;
+    border: 2px solid ridge;
+    background-color: transparent;
+    cursor: pointer;
+    text-transform: uppercase;
+    color: black;
+    font-family: 'Noto Sans SC', sans-serif;
+    margin-top: 10%;
+    
+    
+}
+
+.transponse:hover{
+    background-color: white;
+}
+
+.input{
+    width:40%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: transparent;
+    cursor: pointer;
+    border-radius: 5%;
+   
+}
+.createMatrixInput{
+    background-color:rgb(191, 213, 216);
+    width: fit-content;
+    display: flex;
+    justify-content: center;
+    align-self: center;
+    border: 1px solid black;
+
+}
+
+.img{
+    width: 30%;
+    height:30% ;
+    display: flex;
+    justify-content: center;
+    align-self: center;
+    margin-top: 5%;
+}
