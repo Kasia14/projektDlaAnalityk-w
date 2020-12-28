@@ -2,7 +2,7 @@ const btnTransform = document.querySelector('.transponse');
 class Matrix {
     macierz = [];
     x = 0;
-    y= 0;
+    y = 0;
     constructor(x, y) {
         this.x = x;
         this.y = y;
@@ -52,22 +52,26 @@ class Matrix {
         const createMatrixInput = document.querySelector('.createMatrixInput');
         createMatrixInput.innerHTML = '';
         if (this.x !== 0 && this.y !== 0) {
-            for(let i = 0; i < this.x; i++){
+            for (let i = 0; i < this.x; i++) {
                 const row = document.createElement('div');
                 row.className = 'row';
-                for(let j = 0; j < this.y; j++){
+                for (let j = 0; j < this.y; j++) {
                     const input = document.createElement('input');
                     input.className = 'cell';
                     input.value = this.macierz[i][j];
+                    var parent = this;
+                    input.addEventListener('keyup', function() {
+                        parent.setValue(i, j, input.value);
+                    });
                     row.appendChild(input);
                 }
                 createMatrixInput.appendChild(row);
-            }        
-        } 
+            }
+        }
         else {
             alert('Liczba musi być większa od 0')
         }
-       
+
 
     }
 }
@@ -78,16 +82,17 @@ class Matrix {
 
 function hideOrShow() {
     const BtnCreate = document.querySelector('.createMatrix');
-    const BtnTrans= document.querySelector('.transponse');
+    const BtnTrans = document.querySelector('.transponse');
     BtnCreate.addEventListener('click', () => {
         const row = document.querySelector('.numberRow');
         const column = document.querySelector('.numberColumn')
         const matrix = new Matrix(row.value, column.value);
         matrix.createMatrix();
-        BtnTrans.addEventListener('click', function() { 
+        BtnTrans.addEventListener('click', function () {
             matrix.transponse();
             matrix.createMatrix();
-         })
+        })
+
         //zmienna globalna
         window.matrix = matrix;
 
